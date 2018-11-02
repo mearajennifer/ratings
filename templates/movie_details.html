@@ -6,13 +6,17 @@
 
 <p>released: {{movie.released_at.strftime('%Y')}}</p>
 <p><a href={{movie.imdb_url}}>IMDB page</a></p>
+<p>Average rating: {{ average }}</p>
+{% if prediction %}
+    <p>We predict you will rate this movie {{ prediction }}.</p>
+{% endif %}
 
 {% if session %}
  	{% if user_rating %}
  		<p>Your current rating: {{ user_rating[0] }}</p>
  	{% endif %}
 	<form action="/movies/{{ movie.movie_id }}" method="POST">
-		Rate this biznatch:
+		Rate this movie, if you dare:
 		<select name="score">
 			<option value="1">1</option>
 			<option value="2">2</option>
@@ -21,14 +25,13 @@
 			<option value="5">5</option>
 		</select>
 		<input type="submit">
-	</form>
-	
+	</form>	
 {% endif %}
 
 <ul><h3>User Ratings:</h3>
 
 {% for rating in ratings %}
-<li><a href="/user_info?user_id={{ rating.user.user_id }}">user {{rating.user.user_id}} rated {{rating.score}}</a></li>
+<li><a href="/users/{{ rating.user.user_id }}">user {{rating.user.user_id}} rated {{rating.score}}</a></li>
 {% endfor %}
 
 </ul>

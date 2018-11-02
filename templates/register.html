@@ -5,8 +5,10 @@
 <h2>Register</h2>
 
 <form action="/register" method="POST">
-	<label>Email address: </label><input type="text" name="email"><br>
-	<label>Password: </label><input type="text" name="password">
+	<label>Email address: </label><input type="text" name="email" required><br>
+  <label>Age: </label><input type="text" name="age" required><br>
+  <label>Zip: </label><input type="text" name="zipcode" required><br>
+	<label>Password: </label><input type="text" name="password" required>
 	<input type="submit">
 </form>
 
